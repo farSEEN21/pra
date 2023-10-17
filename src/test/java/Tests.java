@@ -20,24 +20,26 @@ public class Tests extends Sort {
         if (res == -1 || z == -1) {
             System.out.println("There is no " + z);
         } else {
-            System.out.println(res + " Index for that number " + z +" "+ t + " " + t1 + "Res " + (t1 - t));
+            System.out.println(res + " Index for that number " + z + " " + t + " " + t1 + "Res " + (t1 - t));
         }
         Assert.assertEquals(res, z);
     }
 
     @Test
-     public void TestSucces() {
-        int x = 52, z = 1;
-        Random random=new Random();
-        x= (int)(Math.random()*10);
+    public void TestSucces() {
+        int x , z = 75;
+        Random random = new Random(); // object of a random
+        x = (int) (Math.random() * 1000);  //making random number for lenght of array
         System.out.println(x);
         int[] ar = new int[x + 1];
-        for (int i = 0; i <= x; i++) {
-            ar[i] = random.nextInt(99); ;
-                 }
+        for (int i = 0; i <= x; i++) // fill up array
+        {
+            ar[i] = random.nextInt(199);
+            ;
+        }
 
         int t = (int) System.nanoTime();
-        Sort sor = new Sort();
+        Sort sor = new Sort(); //making object of a Sort class
         int t1 = (int) System.nanoTime();
         int res = sor.successively(ar, z);
         if (res == -1) {
