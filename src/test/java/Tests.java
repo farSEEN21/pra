@@ -1,4 +1,7 @@
+import dto.ArrayDTO;
+import dto.methodsForDTO;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Random;
@@ -7,64 +10,74 @@ public class Tests extends Sort {
 
     @Test
     public void Test1() {
-        int x = 44000, z = 3;
-        int[] ar = new int[x];
-        for (int i = 0; i < x; i++) {
-            ar[i] = i;
+        int length = 1, Search_number = 0;
+        int[] array = new int[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = i;
         }
-        int t = (int) System.nanoTime();
         Sort sor = new Sort();
-        long t1 = System.nanoTime();
-
-        int res = sor.SearchingInHalfs(ar, z);
-        if (res == -1 || z == -1) {
-            System.out.println("There is no " + z);
+        long timeBefore = System.nanoTime();
+        int[] res = sor.SearchingInHalfs(array, Search_number);
+        long timeAfter = System.nanoTime();
+        if (res[0] == -1) {
+            System.out.println("There is no " + Search_number + res[1]);
         } else {
-            System.out.println(res + " Index for that number " + z + " " + t + " " + t1 + "Res " + (t1 - t));
+            System.out.println(res[0] + " " + res[1]+  " Index for that number " + Search_number + " " + timeBefore + " " + timeAfter + " Res " + (timeAfter - timeBefore));
         }
-        Assert.assertEquals(res, z);
+        Assert.assertEquals(res[0], Search_number);
     }
 
     @Test
     public void TestSucces() {
-        int x , z = 75;
+        int length, Search_number = 75;
         Random random = new Random(); // object of a random
-        x = (int) (Math.random() * 1000);  //making random number for lenght of array
-        System.out.println(x);
-        int[] ar = new int[x + 1];
-        for (int i = 0; i <= x; i++) // fill up array
+        length = (int) (Math.random() * 1000);  //making random number for lenght of array
+        System.out.println(length);
+        int[] array = new int[length + 1];
+        for (int i = 0; i <= length; i++) // fill up array
         {
-            ar[i] = random.nextInt(199);
-            ;
-        }
+            array[i] = random.nextInt(199);
 
-        int t = (int) System.nanoTime();
+        }
         Sort sor = new Sort(); //making object of a Sort class
-        int t1 = (int) System.nanoTime();
-        int res = sor.SearchingFromBeginning(ar, z);
+        int timeBefore = (int) System.nanoTime();
+        int res = sor.SearchingFromBeginning(array, Search_number);
+        int timeAfter = (int) System.nanoTime();
         if (res == -1) {
-            System.out.println("There is no " + z);
+            System.out.println("There is no " + Search_number);
         } else {
-            System.out.println(res + " Index for that number " + z + " " + t + " " + t1 + " Res " + (t1 - t));
+            System.out.println(res + " Index for that number " + Search_number + " " + timeBefore + " " + timeAfter + " Res " + (timeAfter - timeBefore));
         }
-        Assert.assertEquals(res, z);
+        Assert.assertEquals(res, Search_number);
     }
 
-@Test
-public void TestSucces2() {
-    int x, z = 75;
-    Random random = new Random(); // object of a random
-    x = (int) (Math.random() * 1000);  //making random number for lenght of array
-    System.out.println(x);
-    int[] ar = new int[x + 1];
-    for (int i = 0; i <= x; i++) // fill up array
-    {
-        ar[i] = random.nextInt(199);
-        ;
+
+    @Test (dataProvider  =  "DataArraylengthNumberTime",dataProviderClass = ArrayDTO.class)
+public void Testttt(int length, int searchnumber,long t){
+         int Search_number = searchnumber;
+
+        System.out.println(length);
+        int[] array = new int[length + 1];
+        for (int i = 0; i <= length; i++) // fill up array
+        {
+            array[i] = new methodsForDTO().randomnumber();;
+
+        }
+        for (int x:array)
+            System.out.println(x+ " length of array " + array.length+ "    Search_number "+ Search_number);
+        Sort sor = new Sort(); //making object of a Sort class
+        int timeBefore = (int) System.nanoTime();
+        int res = sor.SearchingFromBeginning(array, Search_number);
+        int timeAfter = (int) System.nanoTime();
+        if (res == -1) {
+            System.out.println("There is no " + searchnumber);
+        } else {
+            System.out.println(res + " Index for that number " + Search_number + " " + timeBefore + " " + timeAfter + " Res " + (timeAfter - timeBefore));
+        }
+        Assert.assertEquals(res, Search_number);
     }
-    Sort sor = new Sort(); //making object of a Sort class
-    ar = sor.BubbleSorting(ar);
-    for (int f : ar) {
-        System.out.println(f);
     }
-}}
+
+
+
+
