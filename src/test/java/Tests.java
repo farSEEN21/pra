@@ -22,7 +22,7 @@ public class Tests extends Sort {
         if (res[0] == -1) {
             System.out.println("There is no " + Search_number + res[1]);
         } else {
-            System.out.println(res[0] + " " + res[1]+  " Index for that number " + Search_number + " " + timeBefore + " " + timeAfter + " Res " + (timeAfter - timeBefore));
+            System.out.println(res[0] + " " + res[1] + " Index for that number " + Search_number + " " + timeBefore + " " + timeAfter + " Res " + (timeAfter - timeBefore));
         }
         Assert.assertEquals(res[0], Search_number);
     }
@@ -52,31 +52,28 @@ public class Tests extends Sort {
     }
 
 
-    @Test (dataProvider  =  "DataArraylengthNumberTime",dataProviderClass = ArrayDTO.class)
-public void Testttt(int length, int searchnumber,long t){
-         int Search_number = searchnumber;
+    @Test(dataProvider = "DataArraylengthNumberTime", dataProviderClass = ArrayDTO.class)
+    public void Testttt(int length, int searchnumber, long t) {
+        int Search_number = searchnumber;
 
         System.out.println(length);
         int[] array = new int[length + 1];
         for (int i = 0; i <= length; i++) // fill up array
         {
-            array[i] = new methodsForDTO().randomnumber();;
-
+            array[i] = new methodsForDTO().randomnumber();
         }
-        for (int x:array)
-            System.out.println(x+ " length of array " + array.length+ "    Search_number "+ Search_number);
         Sort sor = new Sort(); //making object of a Sort class
         int timeBefore = (int) System.nanoTime();
-        int res = sor.SearchingFromBeginning(array, Search_number);
+        int[] res = sor.SearchingInHalfs(array, Search_number);
         int timeAfter = (int) System.nanoTime();
-        if (res == -1) {
+        if (res[0] == -1) {
             System.out.println("There is no " + searchnumber);
         } else {
-            System.out.println(res + " Index for that number " + Search_number + " " + timeBefore + " " + timeAfter + " Res " + (timeAfter - timeBefore));
+            System.out.println(res[0] + " Index for that number " + Search_number + " " + timeBefore + " " + timeAfter + " Res " + (timeAfter - timeBefore));
         }
-        Assert.assertEquals(res, Search_number);
+        Assert.assertEquals(array[res[0]], Search_number);
     }
-    }
+}
 
 
 

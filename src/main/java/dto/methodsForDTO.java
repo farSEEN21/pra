@@ -9,7 +9,7 @@ public class methodsForDTO {
         return  random.nextInt(till);
     }
 public int randomnumber(){
-        return  (int)(Math.random())*100;
+        return  (int)(Math.random()*100);
 }
 
 

@@ -16,18 +16,15 @@ public class Sort {
                 result[0] = m;
                 counter++;
             result[1] = counter;
-                System.out.println(result[1]+" 1");
-            return result;}
+             return result;}
             else if (sortArray[m] < seachingNumber) {
                 l = m + 1;
                 counter++;
                 result[1]=counter;
-                System.out.println(result[1]+" 2");
             } else {
                 r = m - 1;
                 counter++;
                 result[1]=counter;
-                System.out.println(result[1]+" 3");
             }
         }
         result[0]=-1;
