@@ -7,7 +7,7 @@ public class Sort {
 
         int[] sortArray = BubbleSorting(UnsortingArray); //using method for sorting array
         int[] result=new int[2];
-        int l = 0, r = UnsortingArray.length - 1; // searching number X in array using half of array
+        int l = 0, r = sortArray.length - 1; // searching number X in array using half of array
         int counter = 0;
         while (l <= r) {
 
@@ -73,5 +73,6 @@ public class Sort {
             sortArray = tempArray;
         }
         return sortArray;
+
     }
 }

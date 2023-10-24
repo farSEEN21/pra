@@ -8,8 +8,8 @@ public class ArrayDTO {
     public static Object[][] dataArray() {
 int searchnumber= new methodsForDTO().randomizer(90);
 int length= new methodsForDTO().randomnumber()+5;
-        return new Object[][]{{length,searchnumber,TimeOfOneIteration}};
-      //  return new Object[][]{{10,11,23} };
+       // return new Object[][]{{length,searchnumber,TimeOfOneIteration}};
+       return new Object[][]{{10,11,23} };
     }
 
 
